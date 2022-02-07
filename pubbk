@@ -1,0 +1,12 @@
+#!/bin/bash
+BASEDIR=${BASEDIR:-/opt/app-root/src}
+UCDIR=${UCDIR:-${BASEDIR}/UndertheCovers}
+DEST=${DEST:-jappavoo@csa2.bu.edu:www/UC/textbook/}
+
+if [[ -d ${UCDIR} ]]; then
+    rsync -azq --delete ${UCDIR}/textbook/_build/html/ ${DEST}
+else
+    echo "ERROR: can't find directory: $UCDIR"
+    exit -1
+fi
+exit $?
