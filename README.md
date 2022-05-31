@@ -8,7 +8,7 @@ Clone this repo as bin in your persistent directory and then source the setup sc
 
 ```
 cd /opt/app-root/src
-git clone https://github.com/jappavoo/juphub-utils.git bin
-. ./bin/setup.sh
+git clone https://github.com/jappavoo/juphub-utils.git
+./juphub-utils/setup.sh
 ```
 

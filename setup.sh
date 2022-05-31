@@ -5,7 +5,9 @@
 
 BASEDIR=${BASEDIR:-/opt/app-root/src}
 STARTUPHOOK=${BASEDIR}/.myjupyter_start.sh
-STARTUPHOOKSRC=${BASEDIR}/bin/myjupyter_start.sh
+MYDIR=$(readlink -f $0)
+MYDIR=$(dirname $MYDIR)
+STARTUPHOOKSRC=${MYDIR}/myjupyter_start.sh
 
 if [[ ! -a ${STARTUPHOOK} ]]; then 
     if [[ -a ${STARTUPHOOKSRC} ]]; then
