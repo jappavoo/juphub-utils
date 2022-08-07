@@ -1,0 +1,2 @@
+alias gl="git log --decorate --oneline --graph"
+alias gll="gl --all"
