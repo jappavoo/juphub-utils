@@ -23,3 +23,17 @@ for ext in ${JUPY_EXTS}; do
     echo "Enabling: $ext"
     jupyter labextension enable $ext
 done
+
+echo "resetting /opt/conda/share/jupyter/lab/settings/overrides.json"
+cat <<EOF > /opt/conda/share/jupyter/lab/settings/overrides.json
+{
+    "@jupyterlab/terminal-extension:plugin": {
+        "shutdownOnClose": true
+    },
+    "@jupyterlab/statusbar-extension:plugin": {
+        "visible": false
+    }
+}
+EOF
+
+echo "reload jupyterlab webpage for new setting to take effect"
