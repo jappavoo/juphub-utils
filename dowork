@@ -6,3 +6,4 @@ fi
 
 . sshagent.sh
 
+watchmem

@@ -1,0 +1,9 @@
+#!/bin/bash
+MYDIR=$(readlink -f $0)
+MYDIR=$(dirname $MYDIR)
+
+#echo $MYDIR
+
+# from Erwan Granger @ Redhat
+
+watch " ps -eo size,command --sort -size  | awk '{ hr=\$1/1024 ; sum +=hr} END {print sum \" MB of memory used\" }' | tee $MYDIR/watchmem.last"
