@@ -6,4 +6,8 @@ fi
 
 . sshagent.sh
 
-watchmem
+#watchmem
+
+echo "do this"
+echo ". $ENVFILE"
+
