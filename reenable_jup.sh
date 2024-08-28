@@ -17,7 +17,10 @@ JUPY_EXTS="@jupyterlab/fileeditor-extension:plugin
 @jupyterlab/inspector-extension:consoles
 @jupyterlab/inspector-extension:inspector
 @jupyterlab/inspector-extension:notebooks
-@jupyterlab/shortcuts-extension:shortcuts"
+@jupyterlab/shortcuts-extension:shortcuts
+jupyterlab-jupytext
+@jupyterlab/workspaces-extension
+@jupyterlab/git"
 
 for ext in ${JUPY_EXTS}; do
     echo "Enabling: $ext"
