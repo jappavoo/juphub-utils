@@ -1,35 +1,16 @@
 #!/bin/bash
 #set -x
 
-JUPY_EXTS="@jupyterlab/fileeditor-extension:plugin
-@jupyterlab/filebrowser-extension:widget
-@jupyterlab/filebrowser-extension:browser
-@jupyterlab/filebrowser-extension:download
-@jupyterlab/filebrowser-extension:open-browser-tab
-@jupyterlab/filebrowser-extension:open-with
-@jupyterlab/console-extension:tracker
-@jupyterlab/console-extension:foreign
-@jupyterlab/debugger-extension:main
-@jupyterlab/extensionmanager-extension:plugin
-@jupyterlab/launcher-extension:plugin
-@jupyterlab/apputils-extension:palette
-@jupyterlab/logconsole-extension:plugin
-@jupyterlab/codemirror-extension:commands
-@jupyterlab/inspector-extension:consoles
-@jupyterlab/inspector-extension:inspector
-@jupyterlab/inspector-extension:notebooks
-@jupyterlab/shortcuts-extension:shortcuts
-jupyterlab-jupytext
-@jupyterlab/workspaces-extension
-@jupyterlab/git"
+JUPY_EXTS=$(jupyter labextension  list 2>&1 | awk '/^Disabled extensions:/{flag=1; next} /^$/{flag=0} flag' | while read name rest; do echo $name; done)
 
-#JUPY_EXTS=""
-
-for ext in ${JUPY_EXTS}; do
-    echo "Enabling: $ext"
-    jupyter labextension enable $ext
-done
-
+if [[ -n ${JUPY_EXTS} ]]; then
+    for ext in ${JUPY_EXTS}; do
+	echo "Enabling: $ext"
+	jupyter labextension enable $ext
+    done
+else
+    echo "No disabled extensions found."
+fi
 # Menu settings seem to be defined here
 # /opt/conda/share/jupyter/lab/schemas/@jupyterlab/mainmenu-extension/plugin.json
 # we assume that some one may have disabled some of the menus in the overrides
