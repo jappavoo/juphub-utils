@@ -28,6 +28,10 @@ if [[ -a ${OVER_RIDES} ]]; then
        echo "  backing up ${USER_MENU_SETTINGS} ${USER_MENU_SETTINGS}.${TS}"
        cp ${USER_MENU_SETTINGS} ${USER_MENU_SETTINGS}.${TS}
    fi
+   msdir="$(dirname ${USER_MENU_SETTINGS})"
+   [[ ! -d $msdir ]] && {
+       mkdir -p $msdir
+   }
    echo "creating ${USER_MENU_SETTINGS} by rewriting ${OVER_RIDES}"
    python -c "import json
 f = open('${OVER_RIDES}')
